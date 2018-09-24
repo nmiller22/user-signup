@@ -1,40 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!--# TODO:-->
-<!--# Modify the edit.html file to display the watchlist in an unordered list with bullets in front of each movie.-->
-<!--# Put the list between "Flicklist" and "Edit My Watchlist" under this heading: <h2>My Watchlist</h2>-->
 
-<h2>My Watchlist</h2>
-<ul>
-    {% for movie in watchlist: %}
-        <li value="{{ movie }}">{{ movie }}</li>
-    {% endfor %}
-</ul>
+<h2>Signup</h2>
 
-<h2>Edit My Watchlist</h2>
-
-<form action="/add" method="post">
+<form action="/signup" method="post">
     <label>
-        I want to add
-        <input type="text" name="new-movie"/>
-        to my watchlist.
+        Username
+        <input type="text" name="username" value="{{ username }}"/>
     </label>
-    <input type="submit" value="Add It"/>
-</form>
-
-<form action="/crossoff" method="post">
+    <br>
     <label>
-        I want to cross off
-        <select name="crossed-off-movie">
-            <!-- need to loop over watchlist to create option elements -->
-            {% for movie in watchlist: %}
-                <option value="{{ movie }}">{{ movie }}</option>
-            {% endfor %}
-        </select>
-        from my watchlist.
-    </label>
-    <input type="submit" value="Cross It Off"/>
+        Password
+        <input type="password" name="password"/>
+    </label><br>
+    <label>
+        Verify Password
+        <input type="password" name="verify"/>
+    </label><br>
+    <label>
+        Email (optional)
+        <input type="text" name="email" value="{{ email }}"/>
+    </label><br>
+    <input type="submit" value="Submit"/>
 </form>
 
 {% if error %}
